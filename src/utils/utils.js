@@ -1,3 +1,6 @@
+import { removeTask } from '../api/delete.js';
+import { updateTask } from '../api/patch.js';
+
 const user = {
     name: 'Artur',
     password: '1234',
