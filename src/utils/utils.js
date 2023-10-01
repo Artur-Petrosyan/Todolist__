@@ -64,3 +64,8 @@ export const getInputVal = () => {
     });
   };
   
+  const handleDeleteButtonClick = async (taskId, taskContainer) => {
+    await removeTask(taskId);
+    const taskToRemove = document.getElementById(taskId);
+    taskContainer.removeChild(taskToRemove);
+  };
