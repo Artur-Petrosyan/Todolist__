@@ -79,3 +79,8 @@ export const getInputVal = () => {
       });
     });
   };
+
+  export const logOutUser = () => {
+    localStorage.removeItem('authorized');
+    window.location.assign('/');
+  };
