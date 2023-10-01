@@ -6,7 +6,6 @@
   "name": "todolist_webpack",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -20,5 +19,8 @@
     "url": "https://github.com/Artur-Petrosyan/Todolist__/issues"
   },
   "homepage": "https://github.com/Artur-Petrosyan/Todolist__#readme",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "webpack-dev-server": "^4.15.1"
+  }
 }
