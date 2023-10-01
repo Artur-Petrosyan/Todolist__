@@ -9,3 +9,8 @@ import {
   showLoader,
   userAuthorized,
 } from './utils/utils.js';
+
+const loader = document.querySelector('.loader-container');
+const taskContainer = document.querySelector('.tasks');
+const logOutButton = document.querySelector('.log-out__button');
+const authorized = userAuthorized();
