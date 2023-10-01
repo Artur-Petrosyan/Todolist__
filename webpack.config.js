@@ -1,6 +1,6 @@
 const path = require.resolve('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   entry: {
     index: './src/index.js',
@@ -20,41 +20,45 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins : [
+  plugins: [
     new HTMLWebpackPlugin({
       filename: "index.html",
       template: './src/pages/index.html',
       chunks: ['index'],
       minify: {
-          collapseWhitespace: isProd
-      }
-  }),
-  new HTMLWebpackPlugin({
-    filename: "login.html",
-    template: './src/pages/login.html',
-    chunks: ['login'],
-    minify: {
         collapseWhitespace: isProd
-    }
-}),
-new HTMLWebpackPlugin({
-  filename: "all.html",
-  template: './src/pages/all.html',
-  chunks: ['all'],
-  minify: {
-      collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
+      filename: "login.html",
+      template: './src/pages/login.html',
+      chunks: ['login'],
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
+      filename: "all.html",
+      template: './src/pages/all.html',
+      chunks: ['all'],
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+    new HTMLWebpackPlugin({
+      filename: "complited.html",
+      template: './src/pages/complited.html',
+      chunks: ['complited'],
+      minify: {
+        collapseWhitespace: isProd
+      }
+    }),
+
+    new CleanWebpackPlugin()
+  ],
+  module: {
+    rules: [
+
+    ]
   }
-}),
-new HTMLWebpackPlugin({
-  filename: "complited.html",
-  template: './src/pages/complited.html',
-  chunks: ['complited'],
-  minify: {
-      collapseWhitespace: isProd
-  }
-}),
-
-
-]
-
 }
