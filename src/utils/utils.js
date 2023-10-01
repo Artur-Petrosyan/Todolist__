@@ -1,3 +1,8 @@
+const user = {
+    name: 'Artur',
+    password: '1234',
+  };
+
 export const getInputVal = () => {
     const inputName = document.querySelector('.form__input-name');
     const inputPassword = document.querySelector('.form__input-password');
