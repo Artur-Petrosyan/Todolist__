@@ -22,3 +22,15 @@ export const getInputVal = () => {
       return 'Incorrect login or password';
     }
   };
+
+  export const getFilteredTasks = (allTasks, type) => {
+    if (type === 'completed') {
+      return allTasks.filter((item) => item.priority === 2);
+    }
+    if (type === 'active') {
+      return allTasks.filter((item) => item.priority === 1);
+    }
+  
+    return allTasks;
+  };
+  
