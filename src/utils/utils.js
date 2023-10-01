@@ -87,3 +87,5 @@ export const getInputVal = () => {
 
 
   export const userAuthorized = () => Boolean(localStorage.getItem('authorized'));
+
+export const showLoader = (loader) => loader.classList.add('loader-container__display');
