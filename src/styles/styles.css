@@ -1,0 +1,86 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    text-align: center;
+}
+
+.form {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form__legend {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form__input-name,
+.form__input-password {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form__button {
+    width: 100px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form__button-signup {
+    width: 100px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.form__button-signup a {
+    text-decoration: none;
+    color: white;
+}
+
+.form__button-signup:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+
+.form__button:hover {
+    background-color: #0056b3;
+    transition: background-color 0.3s ease;
+}
+.form__error-span{
+    color: red;
+}
+.registration-link {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 14px;
+}
+
+.registration-link:hover {
+    text-decoration: underline;
+}
