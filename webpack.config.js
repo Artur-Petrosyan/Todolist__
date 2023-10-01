@@ -45,6 +45,16 @@ new HTMLWebpackPlugin({
       collapseWhitespace: isProd
   }
 }),
+new HTMLWebpackPlugin({
+  filename: "complited.html",
+  template: './src/pages/complited.html',
+  chunks: ['complited'],
+  minify: {
+      collapseWhitespace: isProd
+  }
+}),
+
+
 ]
 
 }
