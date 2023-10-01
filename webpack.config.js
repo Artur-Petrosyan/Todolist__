@@ -20,8 +20,15 @@ module.exports = {
     filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist')
   },
-  plugins : {
-    
-  }
+  plugins : [
+    new HTMLWebpackPlugin({
+      filename: "index.html",
+      template: './src/pages/index.html',
+      chunks: ['index'],
+      minify: {
+          collapseWhitespace: isProd
+      }
+  }),
+]
 
 }
