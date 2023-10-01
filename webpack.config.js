@@ -29,6 +29,14 @@ module.exports = {
           collapseWhitespace: isProd
       }
   }),
+  new HTMLWebpackPlugin({
+    filename: "login.html",
+    template: './src/pages/login.html',
+    chunks: ['login'],
+    minify: {
+        collapseWhitespace: isProd
+    }
+}),
 ]
 
 }
