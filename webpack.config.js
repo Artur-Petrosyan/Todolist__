@@ -1,8 +1,15 @@
 const path = require.resolve('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+
+const isDev = process.env.NODE_ENV === 'development'
+const isProd = !isDev
+
 module.exports = {
   mode : 'development',
+  devServer : {
+
+  },
   entry: {
     index: './src/index.js',
     login: './src/login.js',
