@@ -6,9 +6,10 @@ const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 
 module.exports = {
-  mode : 'development',
-  devServer : {
-
+  mode: 'development',
+  devServer: {
+    port: 1000,
+    hot : isDev,
   },
   entry: {
     index: './src/index.js',
@@ -70,7 +71,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
-    },
+      },
     ]
   }
 }
