@@ -84,3 +84,6 @@ export const getInputVal = () => {
     localStorage.removeItem('authorized');
     window.location.assign('/');
   };
+
+
+  export const userAuthorized = () => Boolean(localStorage.getItem('authorized'));
