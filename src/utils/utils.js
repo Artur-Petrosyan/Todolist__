@@ -34,3 +34,14 @@ export const getInputVal = () => {
     return allTasks;
   };
   
+  export const createTaskHTML = (task) => {
+    const newTask = `
+      <div id="${task.id}" class="singleTask">
+        <input class='completed' name='checkbox' type='checkbox' ${task.priority === 2 ? 'checked' : ''}>
+        <p>${task.content}</p>
+        <p class="delete" data-task-id="${task.id}">X</p>
+      </div>
+    `;
+    return newTask;
+  };
+  
