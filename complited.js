@@ -35,3 +35,8 @@ const showTasks = async () => {
       logOutUser();
     }
   };
+
+  logOutButton.addEventListener('click', () => {
+    logOutUser();
+  });
+  showTasks();
