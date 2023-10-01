@@ -69,3 +69,13 @@ export const getInputVal = () => {
     const taskToRemove = document.getElementById(taskId);
     taskContainer.removeChild(taskToRemove);
   };
+
+  export const addDeleteButtonEventListeners = (taskContainer) => {
+    const deleteButtons = document.querySelectorAll('.delete');
+    deleteButtons.forEach((button) => {
+      const taskId = button.getAttribute('data-task-id');
+      button.addEventListener('click', () => {
+        handleDeleteButtonClick(taskId, taskContainer);
+      });
+    });
+  };
