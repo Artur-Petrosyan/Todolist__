@@ -45,3 +45,22 @@ export const getInputVal = () => {
     return newTask;
   };
   
+  export const checkBoxesList = async (taskContainer) => {
+    const handleComplitedCheckboxClick = async (isCompleted, taskId) => {
+      await updateTask(isCompleted, taskId);
+    };
+    const inputCheckBoxes = document.querySelectorAll('.completed');
+    inputCheckBoxes.forEach((checkbox) => {
+      const taskId = checkbox.parentNode.id;
+  
+      checkbox.addEventListener('click', (e) => {
+        const isCompleted = Number(e.target.checked) + 1;
+        const taskIsCompleted = document.getElementById(taskId);
+        handleComplitedCheckboxClick(isCompleted, taskId);
+        if (window.location.pathname !== '/all.html') {
+          taskContainer.removeChild(taskIsCompleted);
+        }
+      });
+    });
+  };
+  
