@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "clean-webpack-plugin": "^4.0.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
   },
@@ -22,6 +21,7 @@
   "homepage": "https://github.com/Artur-Petrosyan/Todolist__#readme",
   "description": "",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "html-webpack-plugin": "^5.5.3",
     "webpack-dev-server": "^4.15.1"
   }
