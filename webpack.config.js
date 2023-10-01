@@ -37,6 +37,14 @@ module.exports = {
         collapseWhitespace: isProd
     }
 }),
+new HTMLWebpackPlugin({
+  filename: "all.html",
+  template: './src/pages/all.html',
+  chunks: ['all'],
+  minify: {
+      collapseWhitespace: isProd
+  }
+}),
 ]
 
 }
