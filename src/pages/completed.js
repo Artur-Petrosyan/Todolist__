@@ -1,7 +1,5 @@
-
-
-import { getAllTasks } from './api/get.js';
-import './styles/todos.css'
+import { getAllTasks } from '../api/get.js';
+import '../styles/todos.css'
 import {
     addDeleteButtonEventListeners,
     checkBoxesList,
@@ -10,7 +8,7 @@ import {
     logOutUser,
     showLoader,
     userAuthorized,
-} from './utils/utils.js';
+} from '../utils/utils.js';
 
 export const completed = () => {
     const completedHTML = `

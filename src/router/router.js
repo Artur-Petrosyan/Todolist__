@@ -1,3 +1,4 @@
+import { completed } from "../pages/completed";
 import login from "../pages/login";
 
 const router = {
@@ -21,7 +22,7 @@ const router = {
                 all();
                 break;
             case "#/completed":
-                complited();
+                completed();
                 break;
             case "#/active":
                 active();
