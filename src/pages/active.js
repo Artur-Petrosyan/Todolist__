@@ -1,5 +1,5 @@
-import { getAllTasks } from './api/get.js';
-import './styles/todos.css'
+import { getAllTasks } from '../api/get.js';
+import '../styles/todos.css'
 
 import {
     addDeleteButtonEventListeners,
@@ -10,7 +10,7 @@ import {
     logOutUser,
     showLoader,
     userAuthorized,
-} from './utils/utils.js';
+} from '../utils/utils.js';
 
 
 export const active = () => {
