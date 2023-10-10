@@ -1,4 +1,5 @@
 import { getAllTasks } from '../api/get.js';
+import { header } from '../components/header.js';
 import '../styles/todos.css'
 import {
     addDeleteButtonEventListeners,
@@ -12,6 +13,7 @@ import {
 
 export const completed = () => {
     const completedHTML = `
+    ${header}
 <div class="tasks">
 <div class="loader-container">
     <div class="loader"></div>

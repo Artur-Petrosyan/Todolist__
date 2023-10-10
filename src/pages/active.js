@@ -1,4 +1,5 @@
 import { getAllTasks } from '../api/get.js';
+import { header } from '../components/header.js';
 import '../styles/todos.css'
 
 import {
@@ -15,17 +16,7 @@ import {
 
 export const active = () => {
     const activeHTML = `     
-    <div class='nav'>
-    <div class="nav__all-tasks nav__block">
-        <a href="./all.html">All Tasks</a>
-    </div>
-    <div class="nav__active nav__block">
-        <a href="./complited.html">Completed</a>
-    </div>
-    <div class="nav__complited nav__block">
-        <a href="./active.html">Active</a>
-    </div>
-
+${header}
 </div>
 <div class="tasks">
     <div class="loader-container">
