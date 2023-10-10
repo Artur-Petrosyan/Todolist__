@@ -1,3 +1,5 @@
+import login from "../pages/login";
+
 const router = {
     routes: {
         '/': '/',
