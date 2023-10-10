@@ -1,4 +1,5 @@
 import { active } from "../pages/active";
+import { all } from "../pages/all";
 import { completed } from "../pages/completed";
 import login from "../pages/login";
 

@@ -39,7 +39,7 @@ const login = () => {
 
     if (user === 'authorized') {
       localStorage.setItem('authorized', true);
-      window.location.assign('/all');
+      window.location.assign('#/all');
     } else {
       const spanError = document.querySelector('.form__error-span');
 
