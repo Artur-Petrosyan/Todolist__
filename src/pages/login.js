@@ -3,6 +3,8 @@ import '../styles/styles.css'
 
 
 const login = () => {
+
+
   const loginHTML = ` 
   <div class="container">
   <h1 class="form__legend">LOGIN</h1>
@@ -16,6 +18,8 @@ const login = () => {
   </form>
 </div>
       `
+
+
   const app = document.getElementById('app')
 
   app.innerHTML = loginHTML
@@ -35,7 +39,7 @@ const login = () => {
 
     if (user === 'authorized') {
       localStorage.setItem('authorized', true);
-      window.location.assign('/all.html');
+      window.location.assign('/all');
     } else {
       const spanError = document.querySelector('.form__error-span');
 
