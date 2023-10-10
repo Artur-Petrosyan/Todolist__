@@ -9,3 +9,4 @@
   * [post.js](src/api/post.js)
   * [token.js](src/api/token.js)
 * Add ability to create ToDo with `Enter` key on keyboard
+* Make webpack entry point only one file
