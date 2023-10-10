@@ -13,16 +13,16 @@ const router = {
 
         switch (path) {
             case "/":
-                loginPage()
+                login()
                 break;
             case "#/all":
-                allPage();
+                all();
                 break;
             case "#/completed":
-                complitedPage();
+                complited();
                 break;
             case "#/active":
-                activePage();
+                active();
                 break;
             default:
                 app.innerHTML = '<h1>Page Not Found</h1>';
