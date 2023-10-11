@@ -28,8 +28,8 @@ const makeRequest = async (url, method, headers = {}, body = null) => {
 };
 
 const getDataFromTodoist = async (endpoint) => {
-const url = `https://api.todoist.com/rest/v2/${endpoint}`
-return makeRequest(url,"GET")
+    const url = `https://api.todoist.com/rest/v2/${endpoint}`
+    return makeRequest(url, "GET")
 }
 
 export const getAllProjects = async () => {
@@ -41,58 +41,18 @@ export const getAllTasks = async () => {
 };
 
 export const markTaskAsCompleted = async (taskId) => {
-        const url = `https://api.todoist.com/rest/v2/tasks/${taskId}/close`
-        
-        
-};
-
-
-
-export const removeTask = async (taskId) => {
-    const url = `https://api.todoist.com/rest/v2/tasks/${taskId}`;
-    await makeRequest(url, 'DELETE');
-};
-
-
-export const updateTask = async (isCompleted, id) => {
-    const url = `https://api.todoist.com/rest/v2/tasks/${id}`;
-    const headers = {
-        'Content-Type': 'application/json',
-    };
-    const body = { priority: isCompleted };
-    return makeRequest(url, 'POST', headers, body);
+    const url = `https://api.todoist.com/rest/v2/tasks/${taskId}/close`
+    return makeRequest(url, "POST", { 'X-Request-Id': `${uuidgen()}` })
 };
 
 const fetchCreate = async (endpoint, body = null) => {
-    try {
-        const response = await fetch(`https://api.todoist.com/rest/v2/${endpoint}`, {
-            method: "POST",
-            headers: {
-                Authorization: `Bearer ${token}`,
-                'Content-Type': 'application/json',
-            },
-            body: body && JSON.stringify(body),
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-            return data;
-        }
-        throw new Error(`Failed to create ${endpoint === 'tasks' ? 'task' : 'project'}`);
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+    const url = `https://api.todoist.com/rest/v2/${endpoint}`;
+    return makeRequest(url, 'POST', { 'Content-Type': 'application/json' }, body);
 }
-export const createNewProject = async (projectName) => {
-    const headers = {
-        'Content-Type': 'application/json',
-    }
-    const body = {
-        name: projectName
-    }
-    return fetchCreate('projects', headers, body)
 
+export const createNewProject = async (projectName) => {
+    const body = { name: projectName }
+    return fetchCreate('projects', headers, body)
 };
 
 export const createNewTask = async (taskContent, projectId) => {
@@ -101,5 +61,17 @@ export const createNewTask = async (taskContent, projectId) => {
         project_id: projectId,
     }
     return fetchCreate('tasks', body)
-
 };
+
+export const removeTask = async (taskId) => {
+    const url = `https://api.todoist.com/rest/v2/tasks/${taskId}`;
+    await makeRequest(url, 'DELETE');
+};
+
+export const updateTask = async (isCompleted, id) => {
+    const url = `https://api.todoist.com/rest/v2/tasks/${id}`;
+    const body = { priority: isCompleted };
+    return makeRequest(url, 'POST', { 'Content-Type': 'application/json', }, body);
+};
+
+
