@@ -1,6 +1,6 @@
 export const token = 'c17a5d7d5340433195fdc1a69018be9571794d62';
 
-export const getDataFromTodoist = async (endpoint) => {
+const getDataFromTodoist = async (endpoint) => {
     try {
         const response = await fetch(`https://api.todoist.com/rest/v2/${endpoint}`, {
             headers: {
@@ -91,51 +91,43 @@ export const updateTask = async (isCompleted, id) => {
 };
 
 
-export const createNewProject = async (projectName) => {
+const fetchCreate = async (endpoint, body = null) => {
     try {
-        const response = await fetch('https://api.todoist.com/rest/v2/projects', {
-            method: 'POST',
+        const response = await fetch(`https://api.todoist.com/rest/v2/${endpoint}`, {
+            method: "POST",
             headers: {
-                'Content-Type': 'application/json',
-                'X-Request-Id': '$(uuidgen)',
                 Authorization: `Bearer ${token}`,
+                'Content-Type': 'application/json',
             },
-            body: JSON.stringify({
-                name: projectName,
-            }),
+            body: body && JSON.stringify(body),
         });
 
         if (response.ok) {
             const newProject = await response.json();
             return newProject;
         }
-        throw new Error('Failed to create project');
+        throw new Error(`Failed to create ${endpoint === 'tasks' ? 'task' : 'project'}`);
     } catch (error) {
         console.error(error);
         throw error;
     }
+}
+export const createNewProject = async (projectName) => {
+    const headers = {
+        'Content-Type': 'application/json',
+    }
+    const body = {
+        name: projectName
+    }
+    return fetchCreate('projects', headers, body)
+
 };
 
 export const createNewTask = async (taskContent, projectId) => {
-    try {
-        const response = await fetch('https://api.todoist.com/rest/v2/tasks', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({
-                content: taskContent,
-                project_id: projectId,
-            }),
-        });
-        if (response.ok) {
-            const newTask = await response.json();
-            return newTask;
-        }
-        throw new Error('Failed to create task');
-    } catch (error) {
-        console.error(error);
-        throw error;
+    const body = {
+        content: taskContent,
+        project_id: projectId,
     }
+    return fetchCreate('tasks',body)
+
 };
