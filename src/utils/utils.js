@@ -1,4 +1,4 @@
-import { removeTask ,updateTask} from '../api/http-api.js';
+import { getAllTasks, removeTask, updateTask } from '../api/http-api.js';
 
 const user = {
     name: 'Artur',
@@ -86,11 +86,35 @@ export const logOutUser = () => {
     localStorage.removeItem('authorized');
     window.location.assign('/');
 };
-
-
 export const userAuthorized = () => Boolean(localStorage.getItem('authorized'));
 
 export const showLoader = (loader) => loader.classList.add('loader-container__display');
+
+
+export const showTasks = async (type) => {
+    const loader = document.querySelector('.loader-container');
+    const taskContainer = document.querySelector('.tasks');
+    const authorized = userAuthorized()
+    if (authorized) {
+        showLoader(loader);
+        const allTasks = await getAllTasks();
+        const completedTasks = getFilteredTasks(allTasks, type);
+
+        let taskHTML = '';
+
+        completedTasks.forEach((task) => {
+            taskHTML += createTaskHTML(task);
+        });
+
+        taskContainer.innerHTML = taskHTML;
+        checkBoxesList(taskContainer);
+        addDeleteButtonEventListeners(taskContainer);
+        hideLoader(loader);
+    } else {
+        logOutUser();
+    }
+};
+
 
 export const hideLoader = (loader) => loader.classList.remove('loader-container__display');
 
