@@ -6,7 +6,6 @@ const login = () => {
 
 
   const loginHTML = ` 
-  <div class="container">
   <h1 class="form__legend">LOGIN</h1>
   <form name="loginForm" id="form" class="form">
       <input type="text" id="name" name='name' placeholder="User Name" class="form__input-name">
@@ -16,7 +15,6 @@ const login = () => {
           <a type="submit" href="https://todoist.com/auth/login">Sign up</a>
       </button>
   </form>
-</div>
       `
 
 
