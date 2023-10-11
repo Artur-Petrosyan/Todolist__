@@ -1,4 +1,4 @@
-import { getAllTasks } from '../api/get.js';
+import { getAllTasks } from '../api/http-api.js';
 import { header } from '../components/header.js';
 import '../styles/todos.css'
 import {

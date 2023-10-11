@@ -1,5 +1,4 @@
-import { createNewProject, createNewTask } from '../api/post.js';
-import { getAllProjects, getAllTasks } from '../api/get.js';
+import { getAllProjects, getAllTasks ,createNewProject, createNewTask} from '../api/http-api.js';
 
 import '../styles/todos.css'
 

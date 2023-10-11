@@ -1,5 +1,4 @@
-import { removeTask } from '../api/delete.js';
-import { updateTask } from '../api/patch.js';
+import { removeTask ,updateTask} from '../api/http-api.js';
 
 const user = {
     name: 'Artur',
