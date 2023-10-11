@@ -1,22 +1,35 @@
 export const token = 'c17a5d7d5340433195fdc1a69018be9571794d62';
 
-const getDataFromTodoist = async (endpoint) => {
+const makeRequest = async (url, method, headers = {}, body = null) => {
     try {
-        const response = await fetch(`https://api.todoist.com/rest/v2/${endpoint}`, {
+        const response = await fetch(url, {
+            method,
             headers: {
                 Authorization: `Bearer ${token}`,
+                ...headers,
             },
+            body: body && JSON.stringify(body),
         });
 
-        if (response.ok) {
-            const data = await response.json();
-            return data;
+        if (!response.ok) {
+            throw new Error(`Failed to ${method === 'DELETE' ? 'remove' : 'update'} ${url}`);
         }
-        throw new Error('Failed to fetch projects');
+
+        if (method === 'DELETE') {
+            return;
+        }
+
+        const responseData = await response.json();
+        return responseData;
     } catch (error) {
         console.error(error);
         throw error;
     }
+};
+
+const getDataFromTodoist = async (endpoint) => {
+const url = `https://api.todoist.com/rest/v2/${endpoint}`
+return makeRequest(url,"GET")
 }
 
 export const getAllProjects = async () => {
@@ -27,69 +40,28 @@ export const getAllTasks = async () => {
     return getDataFromTodoist('tasks')
 };
 
-
 export const markTaskAsCompleted = async (taskId) => {
-    try {
-        const response = await fetch(`https://api.todoist.com/rest/v2/tasks/${taskId}/close`, {
-            method: 'POST',
-            headers: {
-                'X-Request-Id': '$(uuidgen)',
-                Authorization: `Bearer ${token}`,
-            },
-        });
-
-        if (!response.ok) {
-            throw new Error('Failed to mark task as completed');
-        }
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+        const url = `https://api.todoist.com/rest/v2/tasks/${taskId}/close`
+        
+        
 };
 
-export const removeTask = async (taskId) => {
-    try {
-        const response = await fetch(`https://api.todoist.com/rest/v2/tasks/${taskId}`, {
-            method: 'DELETE',
-            headers: {
-                Authorization: `Bearer ${token}`,
-            },
-        });
 
-        if (!response.ok) {
-            throw new Error('Failed to remove task');
-        }
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+
+export const removeTask = async (taskId) => {
+    const url = `https://api.todoist.com/rest/v2/tasks/${taskId}`;
+    await makeRequest(url, 'DELETE');
 };
 
 
 export const updateTask = async (isCompleted, id) => {
-    try {
-        const response = await fetch(`https://api.todoist.com/rest/v2/tasks/${id}`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
-            },
-
-            body: JSON.stringify({
-                priority: isCompleted,
-            }),
-        });
-        if (response.ok) {
-            const updatedTask = await response.json();
-            return updatedTask;
-        }
-        throw new Error('Failed to update task');
-    } catch (error) {
-        console.error(error);
-        throw error;
-    }
+    const url = `https://api.todoist.com/rest/v2/tasks/${id}`;
+    const headers = {
+        'Content-Type': 'application/json',
+    };
+    const body = { priority: isCompleted };
+    return makeRequest(url, 'POST', headers, body);
 };
-
 
 const fetchCreate = async (endpoint, body = null) => {
     try {
@@ -103,8 +75,8 @@ const fetchCreate = async (endpoint, body = null) => {
         });
 
         if (response.ok) {
-            const newProject = await response.json();
-            return newProject;
+            const data = await response.json();
+            return data;
         }
         throw new Error(`Failed to create ${endpoint === 'tasks' ? 'task' : 'project'}`);
     } catch (error) {
@@ -128,6 +100,6 @@ export const createNewTask = async (taskContent, projectId) => {
         content: taskContent,
         project_id: projectId,
     }
-    return fetchCreate('tasks',body)
+    return fetchCreate('tasks', body)
 
 };
