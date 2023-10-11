@@ -85,6 +85,8 @@ h1 {
 .todo-container__newProject,
 .todo-container__button {
   background-color: #ff2e63;
+  border-radius: 4px;
+  margin-right: 10px;
   color: #fff;
   border: none;
   padding: 10px 20px;

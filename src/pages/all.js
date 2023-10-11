@@ -65,6 +65,16 @@ ${header}
             const projects = await getAllProjects();
             const todoProject = projects.find((project) => project.name === 'Todo Project');
             if (todoProject) {
+                todoInput.addEventListener('keypress', async (e) => {
+                    if (todoInput.value && todoProject) {
+                        if (e.key === "Enter") {
+                            await createNewTask(todoInput.value, todoProject.id);
+                            todoInput.value = '';
+                            showTasks();
+                        }
+                    }
+
+                })
                 addTodoButton.addEventListener('click', async () => {
                     if (todoInput.value && todoProject) {
                         await createNewTask(todoInput.value, todoProject.id);

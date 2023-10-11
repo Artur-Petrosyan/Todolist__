@@ -3,8 +3,6 @@ import '../styles/styles.css'
 
 
 const login = () => {
-
-
   const loginHTML = ` 
   <h1 class="form__legend">LOGIN</h1>
   <form name="loginForm" id="form" class="form">
