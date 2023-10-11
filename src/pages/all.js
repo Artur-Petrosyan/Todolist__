@@ -1,14 +1,13 @@
-import { getAllProjects, getAllTasks ,createNewProject, createNewTask} from '../api/http-api.js';
-
 import '../styles/todos.css'
 
+import { getAllProjects, getAllTasks, createNewProject, createNewTask } from '../api/http-api.js';
+
 import {
-    addDeleteButtonEventListeners,
-    checkBoxesList, createTaskHTML,
-    logOutUser, showLoader,
-    userAuthorized,
+    addDeleteButtonEventListeners, checkBoxesList,
+    createTaskHTML, logOutUser, showLoader, userAuthorized,
 } from '../utils/utils.js';
 import { header } from '../components/header.js';
+import { navigateTo } from '../router/router';
 
 export const all = () => {
     const allHTML = `
@@ -30,7 +29,7 @@ ${header}
 `
     const app = document.getElementById('app')
     app.innerHTML = allHTML
-    const authorized = userAuthorized();
+
 
     const taskContainer = document.querySelector('.tasks');
     const todoInput = document.querySelector('.todo-container__input');
@@ -38,7 +37,11 @@ ${header}
     const addTodoButton = document.querySelector('.todo-container__button');
     const loader = document.querySelector('.loader-container');
     const logOutButton = document.querySelector('.log-out__button');
+    const navList = document.querySelectorAll('li')
 
+    navList.forEach((item) => {
+        item.addEventListener('click', () => navigateTo(`/${item.innerText}`))
+    })
     const getTasks = async () => {
         const allTasks = await getAllTasks();
         return allTasks;
@@ -55,7 +58,7 @@ ${header}
 
     const initilizeApp = async () => {
         showLoader(loader);
-        if (authorized) {
+        if (userAuthorized()) {
             createProjectButton.addEventListener('click', () => {
                 createNewProject('Todo Project');
             });

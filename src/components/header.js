@@ -1,7 +1,7 @@
 export const header = `
-<ul>
-<li class="all">all</li>
-<li  class="active"> active</li>
-<li class="complited">completed</li>
+<ul class="nav">
+<li class="nav__all">all</li>
+<li  class="nav__active"> active</li>
+<li class="nav__completed">completed</li>
 </ul>
 `

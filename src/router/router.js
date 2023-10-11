@@ -44,5 +44,10 @@ const router = {
     }
 }
 
+export const navigateTo = (route) => {
+    router.navigate(router.routes[route])
+}
+
+
 
 export default router;
