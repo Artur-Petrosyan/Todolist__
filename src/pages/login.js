@@ -10,10 +10,12 @@ const login = () => {
   <form name="loginForm" id="form" class="form">
       <input type="text" id="name" name='name' placeholder="User Name" class="form__input-name">
       <input type="password" id="password" name="password" placeholder="Password" class="form__input-password">
-      <button type="submit" class="form__button">Login</button>
-      <button type="submit" class="form__button-signup">
-          <a type="submit" href="https://todoist.com/auth/login">Sign up</a>
-      </button>
+   <div class='form__buttons'>
+   <button type="submit" class="form__button">Login</button>
+   <button type="submit" class="form__button-signup">
+       <a type="submit" href="https://todoist.com/auth/login">Sign up</a>
+   </button>
+   </div>
   </form>
       `
 
