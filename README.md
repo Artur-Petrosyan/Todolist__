@@ -14,8 +14,8 @@ To get started with this project, follow these steps:
 
 This project provides the following scripts:
 
-- `npm run build`: Builds the project for production.
-- `npm run dev`: Starts the development server.
-- `npm start`: Starts the production server.
+- `npm run prod`: Builds the project for production.
+- `npm run dev`: Builds the project for development.
+- `npm start`: Starts the development server.
 
 The project will be available at `http://localhost:1000`.
