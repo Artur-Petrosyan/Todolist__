@@ -94,6 +94,8 @@ export const showLoader = (loader) => loader.classList.add('loader-container__di
 export const showTasks = async (type) => {
     const loader = document.querySelector('.loader-container');
     const taskContainer = document.querySelector('.tasks');
+    const url = window.location.hash
+
     const authorized = userAuthorized()
     if (authorized) {
         showLoader(loader);
