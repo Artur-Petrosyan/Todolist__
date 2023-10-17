@@ -1,0 +1,11 @@
+open 134.122.74.45
+armen123
+199808Armen.
+cd public_html
+binary
+mput dist/*
+
+
+
+
+
