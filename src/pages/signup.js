@@ -67,7 +67,7 @@ const signUp = () => {
                     errorSpan.className = 'form__error-span';
                     errorSpan.textContent = 'This username already exists';
                     form.insertAdjacentElement('afterbegin', errorSpan);
-                }   
+                }
             }
         }
     })
