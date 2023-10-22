@@ -1,3 +1,4 @@
+import { createUser } from "../api/http-api";
 import { navigateTo } from "../router/router";
 
 const signUp = () => {
@@ -19,7 +20,7 @@ const signUp = () => {
     const loginButton = document.querySelector('.form__button-login')
     const signUpBuutton = document.querySelector('.form__button')
     const nameInput = document.querySelector('.form__input-name')
-    const passwordInput = document.querySelector('.form__input-name')
+    const passwordInput = document.querySelector('.form__input-password')
     let userNewAccount = {
         name: '',
         password: ''
@@ -31,20 +32,23 @@ const signUp = () => {
     })
 
     nameInput.addEventListener('change', (e) => {
-       userNewAccount = {
+        userNewAccount = {
             ...userNewAccount, name: e.target.value
         }
+        return userNewAccount
     })
     passwordInput.addEventListener('change', (e) => {
-       userNewAccount = {
+        userNewAccount = {
             ...userNewAccount, password: e.target.value
         }
+        return userNewAccount
     })
 
 
     signUpBuutton.addEventListener('click', async (e) => {
         e.preventDefault()
-        console.log(userNewAccount);
+        const { name, password } = userNewAccount
+        createUser(name, password)
     })
 
 

@@ -75,3 +75,19 @@ export const updateTask = async (isCompleted, id) => {
 };
 
 
+
+export const createUser = async (name, password) => {
+    const url = 'http://localhost:3000/post'
+    const body = JSON.stringify({
+        name, password
+    })
+    fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body,
+    }
+
+    )
+}
