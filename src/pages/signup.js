@@ -48,7 +48,28 @@ const signUp = () => {
     signUpBuutton.addEventListener('click', async (e) => {
         e.preventDefault()
         const { name, password } = userNewAccount
-        createUser(name, password)
+        if (name.length < 4) {
+            nameInput.classList.add('name-error')
+        } else {
+            nameInput.classList.remove('name-error')
+        }
+        if (password.length < 8) {
+            passwordInput.classList.add('name-error')
+        } else {
+            passwordInput.classList.remove('name-error')
+        }
+        if (name.length > 4 && password.length > 7) {
+            const response = await createUser(name, password)
+            if (response.exists === true) {
+                const spanError = document.querySelector('.form__error-span');
+                if (!spanError) {
+                    const errorSpan = document.createElement('span');
+                    errorSpan.className = 'form__error-span';
+                    errorSpan.textContent = 'This username already exists';
+                    form.insertAdjacentElement('afterbegin', errorSpan);
+                }   
+            }
+        }
     })
 
 

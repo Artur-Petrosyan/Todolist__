@@ -104,3 +104,8 @@ body {
 .registration-link:hover {
     text-decoration: underline;
 }
+
+
+.name-error {
+    border: 2px red solid;
+}

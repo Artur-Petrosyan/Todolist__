@@ -51,13 +51,13 @@ app.post('/post', (req, res) => {
       console.error('Ошибка при выполнении SELECT:', err);
     }
 
-    if (results.length > 0) {
-      res.status(200).json({ exists: true, message: 'Пользователь существует' });
+    if (results) {
+      res.status(200).json({ exists: true, message: 'Пользователь существует'});
     } else {
       connection.query(sqlInsert, values, (err, results) => {
         console.log(results);
       })
-      res.status(200).json({ exists: false, message: 'Пользователь не существует' });
+      res.status(200).json({ exists: false, message: 'Пользователь не существует'});
     }
   });
 });
