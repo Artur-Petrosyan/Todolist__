@@ -7,25 +7,27 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 const optimization = () => {
+
   const config = {
-      splitChunks: {
-          chunks: 'all'
-      }
+    splitChunks: {
+      chunks: 'all'
+    }
   }
   if (isProd) {
-      config.minimizer = [
-          new TerserWebpackPlugin()
-      ]
+    config.minimizer = [
+      new TerserWebpackPlugin()
+    ]
   }
 
   return config
 }
 
 module.exports = {
+  watch: true,
   mode: 'development',
   devServer: {
     port: 1000,
-    hot : isDev,
+    hot: isDev,
   },
   entry: {
     index: './src/index.js',
@@ -36,7 +38,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist')
   },
 
-  optimization : optimization(),
+  optimization: optimization(),
 
   plugins: [
     new HTMLWebpackPlugin({
@@ -47,17 +49,17 @@ module.exports = {
         collapseWhitespace: isProd
       }
     }),
-  
+
     new MiniCssExtractPlugin({
       filename: '[name].[contenthash].css'
-  }),
+    }),
     new CleanWebpackPlugin()
   ],
   module: {
     rules: [
       {
-        test : /\.css$/,
-        use : [MiniCssExtractPlugin.loader,'css-loader']
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
       },
       {
         test: /\.(?:js|mjs|cjs)$/,
