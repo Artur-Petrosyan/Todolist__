@@ -1,5 +1,6 @@
 import { getInputVal } from '../utils/utils.js';
 import '../styles/styles.css'
+import { navigateTo } from '../router/router.js';
 
 
 const login = () => {
@@ -10,9 +11,7 @@ const login = () => {
       <input type="password" id="password" name="password" placeholder="Password" class="form__input-password">
    <div class='form__buttons'>
    <button type="submit" class="form__button">Login</button>
-   <button type="submit" class="form__button-signup">
-       <a type="submit" href="https://todoist.com/auth/login">Sign up</a>
-   </button>
+   <button type="submit" class="form__button-signup">Sign Up</button>
    </div>
   </form>
       `
@@ -25,10 +24,13 @@ const login = () => {
 
   const form = document.querySelector('.form');
   const button = document.querySelector('.form__button');
+  const signUpBtn = document.querySelector('.form__button-signup')
 
-  if (window.location.pathname === '/') {
-    localStorage.removeItem('token');
-  }
+  signUpBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    window.location.assign('#/signUp')
+
+  })
 
   button.addEventListener('click', (e) => {
     e.preventDefault();
@@ -37,7 +39,7 @@ const login = () => {
 
     if (user === 'authorized') {
       localStorage.setItem('authorized', true);
-      window.location.assign('#/all');
+      navigateTo('/all')
     } else {
       const spanError = document.querySelector('.form__error-span');
 

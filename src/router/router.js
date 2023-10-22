@@ -2,10 +2,12 @@ import { active } from "../pages/active";
 import { all } from "../pages/all";
 import { completed } from "../pages/completed";
 import login from "../pages/login";
+import signUp from "../pages/signup";
 
 const router = {
     routes: {
         '/': '/',
+        '/signup': '/signup',
         '/all': '/all',
         '/active': '/active',
         '/completed': '/completed'
@@ -20,6 +22,9 @@ const router = {
             case "/":
                 login()
                 break;
+            case '#/signUp':
+                signUp()
+                break
             case "#/all":
                 all();
                 break;
@@ -29,6 +34,7 @@ const router = {
             case "#/active":
                 active();
                 break;
+
             default:
                 app.innerHTML = '<h1>Page Not Found</h1>';
         }
