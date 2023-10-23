@@ -37,7 +37,11 @@ app.get('/', (req, res) => {
 })
 
 
-
+app.get('/users', async (req, res) => {
+  const sqlUsers = "SELECT * FROM `user`"
+  
+  
+})
 
 app.post('/registr', async (req, res) => {
   const usernameToCheck = req.body.name;

@@ -42,7 +42,6 @@ const login = () => {
       navigateTo('/all')
     } else {
       const spanError = document.querySelector('.form__error-span');
-
       if (!spanError) {
         const errorSpan = document.createElement('span');
         errorSpan.className = 'form__error-span';

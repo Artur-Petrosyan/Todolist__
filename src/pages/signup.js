@@ -2,6 +2,7 @@ import { createUser } from "../api/http-api";
 import { navigateTo } from "../router/router";
 
 const signUp = () => {
+
     const signUpHTML = `
 <h1 class="form__legend">SIGN UP</h1>
 <form name="signUp" id="form" class="form">
@@ -15,12 +16,16 @@ const signUp = () => {
  </div>
 </form>
 `
+
     const app = document.getElementById('app')
+    
     app.innerHTML = signUpHTML;
+    
     const loginButton = document.querySelector('.form__button-login')
     const signUpBuutton = document.querySelector('.form__button')
     const nameInput = document.querySelector('.form__input-name')
     const passwordInput = document.querySelector('.form__input-password')
+
     let userNewAccount = {
         name: '',
         password: ''
@@ -44,7 +49,6 @@ const signUp = () => {
         return userNewAccount
     })
 
-
     signUpBuutton.addEventListener('click', async (e) => {
         e.preventDefault()
         const { name, password } = userNewAccount
@@ -67,16 +71,15 @@ const signUp = () => {
                     errorSpan.className = 'form__error-span';
                     errorSpan.textContent = 'This username already exists';
                     form.insertAdjacentElement('afterbegin', errorSpan);
-                } else {
-                    const errorSpan = document.querySelector(".form__error-span")
-                    console.log(errorSpan);
-                    form.removeChild(errorSpan)
                 }
+            } else {
+                localStorage.setItem('authorized', true)
+                navigateTo('/all')
+                const errorSpan = document.querySelector('.form__error-span')
+                form.removeChild(errorSpan)
             }
         }
     })
-
-
 }
 
 

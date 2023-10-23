@@ -76,12 +76,28 @@ export const updateTask = async (isCompleted, id) => {
 
 
 
+export const getUsers = async (name, password) => {
+    const url = 'http://localhost:3000/users';
+    const body = JSON.stringify({
+        name, password
+    })
+    const response = await fetch(url, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body
+    })
+    const data = await response.json()
+    return data
+}
+
 export const createUser = async (name, password) => {
     const url = 'http://localhost:3000/registr'
     const body = JSON.stringify({
         name, password
     })
-   const response = await fetch(url, {
+    const response = await fetch(url, {
         method: "POST",
         headers: {
             "Content-Type": 'application/json'
@@ -90,5 +106,5 @@ export const createUser = async (name, password) => {
     }
     )
     const data = await response.json()
-   return data
+    return data
 }
