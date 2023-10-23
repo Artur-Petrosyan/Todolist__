@@ -14,6 +14,7 @@ const router = {
     },
     navigate(path) {
         window.location.hash = path;
+        console.log(path);
     },
     handleRoute() {
         const path = window.location.hash || '/';
@@ -22,7 +23,7 @@ const router = {
             case "/":
                 login()
                 break;
-            case '#/signUp':
+            case '#/signup':
                 signUp()
                 break
             case "#/all":

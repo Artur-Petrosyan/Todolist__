@@ -1,4 +1,3 @@
-import { getInputVal } from '../utils/utils.js';
 import '../styles/styles.css'
 import { navigateTo } from '../router/router.js';
 import { getUsers } from '../api/http-api.js';
@@ -7,7 +6,7 @@ import { getUsers } from '../api/http-api.js';
 const login = () => {
   const loginHTML = ` 
   <h1 class="form__legend">LOGIN</h1>
-  <form name="loginForm" id="form" class="form">
+  <form name="loginForm" id="form" class="form" method='post'>
       <input type="text" id="name" name='name' placeholder="User Name" class="form__input-name">
       <input type="password" id="password" name="password" placeholder="Password" class="form__input-password">
    <div class='form__buttons'>
@@ -29,7 +28,7 @@ const login = () => {
 
   signUpBtn.addEventListener('click', (e) => {
     e.preventDefault()
-    window.location.assign('#/signUp')
+    navigateTo('/signup')
 
   })
 
