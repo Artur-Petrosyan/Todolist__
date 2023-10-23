@@ -2,7 +2,8 @@ const express = require('express')
 const mysql = require('mysql')
 const cors = require('cors')
 const app = express()
-
+const bcrypt = require('bcrypt')
+const saltRounds = 10;
 app.use(cors())
 
 app.use(express.json())
@@ -38,26 +39,24 @@ app.get('/', (req, res) => {
 
 
 
-app.post('/post', (req, res) => {
+app.post('/registr', async (req, res) => {
   const usernameToCheck = req.body.name;
-  const sqlSelect = "SELECT * FROM user WHERE name = ?";
+  const sqlSelect = "SELECT * FROM user WHERE NAME = ?";
   const sqlInsert = "INSERT INTO user (name, password) VALUES (?, ?)";
-  const reqdata = req.body;
-  const values = [reqdata.name, reqdata.password];
-
-
+  const { name, password } = req.body;
+  let hashPassword = await bcrypt.hash(password, saltRounds).then(pass => pass)
+  const values = [name, hashPassword];
   connection.query(sqlSelect, [usernameToCheck], (err, results) => {
     if (err) {
       console.error('Ошибка при выполнении SELECT:', err);
     }
+    if (results.length > 0) {
 
-    if (results) {
-      res.status(200).json({ exists: true, message: 'Пользователь существует'});
+      res.status(200).json({ exists: true, message: 'Пользователь существует' });
     } else {
+      res.status(200).json({ exists: false, message: 'Пользователь не существует' });
       connection.query(sqlInsert, values, (err, results) => {
-        console.log(results);
       })
-      res.status(200).json({ exists: false, message: 'Пользователь не существует'});
     }
   });
 });

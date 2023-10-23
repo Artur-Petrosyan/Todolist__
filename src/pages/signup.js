@@ -60,13 +60,17 @@ const signUp = () => {
         }
         if (name.length > 4 && password.length > 7) {
             const response = await createUser(name, password)
-            if (response.exists === true) {
+            if (response.exists) {
                 const spanError = document.querySelector('.form__error-span');
                 if (!spanError) {
                     const errorSpan = document.createElement('span');
                     errorSpan.className = 'form__error-span';
                     errorSpan.textContent = 'This username already exists';
                     form.insertAdjacentElement('afterbegin', errorSpan);
+                } else {
+                    const errorSpan = document.querySelector(".form__error-span")
+                    console.log(errorSpan);
+                    form.removeChild(errorSpan)
                 }
             }
         }

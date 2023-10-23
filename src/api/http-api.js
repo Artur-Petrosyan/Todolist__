@@ -77,7 +77,7 @@ export const updateTask = async (isCompleted, id) => {
 
 
 export const createUser = async (name, password) => {
-    const url = 'http://localhost:3000/post'
+    const url = 'http://localhost:3000/registr'
     const body = JSON.stringify({
         name, password
     })
