@@ -18,40 +18,31 @@ const signUp = () => {
 `
 
     const app = document.getElementById('app')
-    
+
     app.innerHTML = signUpHTML;
-    
+
     const loginButton = document.querySelector('.form__button-login')
     const signUpBuutton = document.querySelector('.form__button')
     const nameInput = document.querySelector('.form__input-name')
     const passwordInput = document.querySelector('.form__input-password')
 
-    let userNewAccount = {
-        name: '',
-        password: ''
-    }
 
     loginButton.addEventListener('click', (e) => {
         e.preventDefault()
         window.history.back()
     })
 
-    nameInput.addEventListener('change', (e) => {
-        userNewAccount = {
-            ...userNewAccount, name: e.target.value
-        }
-        return userNewAccount
-    })
-    passwordInput.addEventListener('change', (e) => {
-        userNewAccount = {
-            ...userNewAccount, password: e.target.value
-        }
-        return userNewAccount
-    })
+
+
 
     signUpBuutton.addEventListener('click', async (e) => {
         e.preventDefault()
-        const { name, password } = userNewAccount
+        const form = document.getElementById('form')
+        const formData = new FormData(form)
+        console.log(formData.keys());   
+        const name = formData.get('name')
+        const password = formData.get('password')
+      
         if (name.length < 4) {
             nameInput.classList.add('name-error')
         } else {

@@ -22,7 +22,6 @@ const login = () => {
   app.innerHTML = loginHTML
 
 
-  const form = document.querySelector('.form');
   const button = document.querySelector('.form__button');
   const signUpBtn = document.querySelector('.form__button-signup')
 
@@ -33,32 +32,18 @@ const login = () => {
   })
 
 
-  const inputName = document.querySelector('.form__input-name');
-  const inputPassword = document.querySelector('.form__input-password');
 
 
 
-  let namePassword = {
-    name: '',
-    password: ''
-  };
-
-  inputName.addEventListener('change', (e) => {
-    return namePassword = {
-      ...namePassword, name: e.target.value
-    }
-  })
-  inputPassword.addEventListener('change', (e) => {
-    return namePassword = {
-      ...namePassword, password: e.target.value
-    }
-  })
 
   button.addEventListener('click', async (e) => {
     e.preventDefault();
+    const form = document.getElementById('form')
 
+    const formData = new FormData(form)
+    const password = formData.get('password')
+    const name = formData.get('name')
 
-    const { name, password } = namePassword;
     const data = await getUsers(name, password)
     const access = data.access
     if (access) {
