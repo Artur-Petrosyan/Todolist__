@@ -1,6 +1,7 @@
 import { getInputVal } from '../utils/utils.js';
 import '../styles/styles.css'
 import { navigateTo } from '../router/router.js';
+import { getUsers } from '../api/http-api.js';
 
 
 const login = () => {
@@ -32,12 +33,36 @@ const login = () => {
 
   })
 
-  button.addEventListener('click', (e) => {
+
+  const inputName = document.querySelector('.form__input-name');
+  const inputPassword = document.querySelector('.form__input-password');
+
+
+
+  let namePassword = {
+    name: '',
+    password: ''
+  };
+
+  inputName.addEventListener('change', (e) => {
+    return namePassword = {
+      ...namePassword, name: e.target.value
+    }
+  })
+  inputPassword.addEventListener('change', (e) => {
+    return namePassword = {
+      ...namePassword, password: e.target.value
+    }
+  })
+
+  button.addEventListener('click', async (e) => {
     e.preventDefault();
 
-    const user = getInputVal();
 
-    if (user === 'authorized') {
+    const { name, password } = namePassword;
+    const data = await getUsers(name, password)
+    const access = data.access
+    if (access) {
       localStorage.setItem('authorized', true);
       navigateTo('/all')
     } else {

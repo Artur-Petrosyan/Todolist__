@@ -37,11 +37,37 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/users', async (req, res) => {
-  const sqlUsers = "SELECT * FROM `user`"
-  
-  
+app.get('/users', (req, res) => {
+  const { name, password } = req.query
+  const sqlUsers = "SELECT * FROM `user` WHERE name = ?"
+
+  connection.query(sqlUsers, [name], (err, results) => {
+
+    if (err) {
+      console.error('Ошибка при выполнении SELECT:', err);
+    }
+    if (results.length > 0) {
+      let hashPassword = results.map((item) => item.password).toString()
+      bcrypt.compare(password, hashPassword, (err, result) => {
+        if (result === true) {
+          res.json({ access: true })
+        } else {
+          res.json({ access: false })
+        }
+      })
+    }else {
+      res.json({access : false})
+    }
+
+  })
+
 })
+
+
+
+
+
+
 
 app.post('/registr', async (req, res) => {
   const usernameToCheck = req.body.name;

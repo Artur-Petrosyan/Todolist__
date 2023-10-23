@@ -76,17 +76,16 @@ export const updateTask = async (isCompleted, id) => {
 
 
 
+// petqa poxvi mi hat sarqvi
+
 export const getUsers = async (name, password) => {
-    const url = 'http://localhost:3000/users';
-    const body = JSON.stringify({
-        name, password
-    })
+    const url = `http://localhost:3000/users?name=${name}&&password=${password}`;
+ 
     const response = await fetch(url, {
         method: "GET",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": 'application/json'
         },
-        body
     })
     const data = await response.json()
     return data
@@ -108,3 +107,5 @@ export const createUser = async (name, password) => {
     const data = await response.json()
     return data
 }
+
+// 
