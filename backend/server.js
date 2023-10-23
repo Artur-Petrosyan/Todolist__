@@ -37,8 +37,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.get('/users', (req, res) => {
-  const { name, password } = req.query
+app.post('/users', (req, res) => {
+  const { name, password } = req.body
   const sqlUsers = "SELECT * FROM `user` WHERE name = ?"
 
   connection.query(sqlUsers, [name], (err, results) => {
@@ -50,7 +50,7 @@ app.get('/users', (req, res) => {
       let hashPassword = results.map((item) => item.password).toString()
       bcrypt.compare(password, hashPassword, (err, result) => {
         if (result === true) {
-          res.json({ access: true })
+          res.status(200).json({ access: true })
         } else {
           res.json({ access: false })
         }

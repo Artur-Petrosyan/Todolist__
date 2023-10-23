@@ -39,10 +39,9 @@ const signUp = () => {
         e.preventDefault()
         const form = document.getElementById('form')
         const formData = new FormData(form)
-        console.log(formData.keys());   
         const name = formData.get('name')
         const password = formData.get('password')
-      
+
         if (name.length < 4) {
             nameInput.classList.add('name-error')
         } else {
@@ -67,7 +66,10 @@ const signUp = () => {
                 localStorage.setItem('authorized', true)
                 navigateTo('/all')
                 const errorSpan = document.querySelector('.form__error-span')
-                form.removeChild(errorSpan)
+                if (errorSpan) {
+                    return form.removeChild(errorSpan)
+
+                }
             }
         }
     })

@@ -76,16 +76,18 @@ export const updateTask = async (isCompleted, id) => {
 
 
 
-// petqa poxvi mi hat sarqvi
 
 export const getUsers = async (name, password) => {
-    const url = `http://localhost:3000/users?name=${name}&&password=${password}`;
- 
+    const url = 'http://localhost:3000/users';
+    const body = JSON.stringify({
+        name, password
+    })
     const response = await fetch(url, {
-        method: "GET",
+        method: "POST",
         headers: {
             "Content-Type": 'application/json'
         },
+        body
     })
     const data = await response.json()
     return data
