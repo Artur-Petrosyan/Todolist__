@@ -42,18 +42,13 @@ const signUp = () => {
         const name = formData.get('name')
         const password = formData.get('password')
 
-        if (name.length < 4) {
-            nameInput.classList.add('name-error')
-        } else {
-            nameInput.classList.remove('name-error')
-        }
-        if (password.length < 8) {
-            passwordInput.classList.add('name-error')
-        } else {
-            passwordInput.classList.remove('name-error')
-        }
+
+        name.length < 4 ? nameInput.classList.add('name-error') : nameInput.classList.remove('name-error')
+        password.length < 8 ? passwordInput.classList.add('name-error') : passwordInput.classList.remove('name-error')
+     
+        
         if (name.length > 4 && password.length > 7) {
-            const response = await performAuthRequest(name, password,'register')
+            const response = await performAuthRequest(name, password, 'register')
             if (response.exists) {
                 const spanError = document.querySelector('.form__error-span');
                 if (!spanError) {
