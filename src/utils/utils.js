@@ -34,7 +34,6 @@ export const checkBoxesList = async (taskContainer) => {
             const isCompleted = Number(e.target.checked) + 1;
             const taskIsCompleted = document.getElementById(taskId);
             handleComplitedCheckboxClick(isCompleted, taskId);
-            console.log(window.location.hash);
             if (window.location.hash !== '#/all') {
                 taskContainer.removeChild(taskIsCompleted);
             }
