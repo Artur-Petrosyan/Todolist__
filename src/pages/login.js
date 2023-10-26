@@ -1,7 +1,7 @@
 import '../styles/styles.css'
 import { navigateTo } from '../router/router.js';
 import { performAuthRequest } from '../api/http-api.js';
-import { Form, FormLogin } from '../components/Forms';
+import { FormLogin } from '../components/Forms';
 
 
 const login = () => {
@@ -12,7 +12,6 @@ const login = () => {
 
   app.innerHTML = FormLogin('LOGIN', { login: 'Login', signup: "Sign Up" })
 
-
   const button = document.querySelector('.form__button');
   const signUpBtn = document.querySelector('.form__button-signup')
 
@@ -21,11 +20,6 @@ const login = () => {
     navigateTo('/signup')
 
   })
-
-
-
-
-
 
   button.addEventListener('click', async (e) => {
     e.preventDefault();

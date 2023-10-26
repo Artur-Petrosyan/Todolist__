@@ -8,7 +8,7 @@ const signUp = () => {
     app.innerHTML = FormSignup("SIGN UP", { login: "Login", signup: "Sign Up" });
 
     const loginButton = document.querySelector('.form__button-login')
-    const signUpBuutton = document.querySelector('.form__button')
+    const signUpButton = document.querySelector('.form__button')
     const nameInput = document.querySelector('.form__input-name')
     const passwordInput = document.querySelector('.form__input-password')
 
@@ -18,10 +18,7 @@ const signUp = () => {
         window.history.back()
     })
 
-
-
-
-    signUpBuutton.addEventListener('click', async (e) => {
+    signUpButton.addEventListener('click', async (e) => {
         e.preventDefault()
         const form = document.getElementById('form')
         const formData = new FormData(form)

@@ -1,12 +1,11 @@
 import { Section } from '../components/Section.js';
-import { navigateTo } from '../router/router.js';
-import '../styles/todos.css'
-
 import { logOutUser, showTasks } from '../utils/utils.js';
 
+import { navigateTo } from '../router/router.js';
+
+import '../styles/todos.css'
 
 export const active = () => {
-
     const app = document.getElementById('app');
     app.innerHTML = Section();
     const navList = document.querySelectorAll('li')

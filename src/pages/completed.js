@@ -1,7 +1,8 @@
 import { Section } from '../components/Section.js';
+import { logOutUser, showTasks } from '../utils/utils.js';
 import { navigateTo } from '../router/router.js';
+
 import '../styles/todos.css'
-import { logOutUser, showTasks, userAuthorized } from '../utils/utils.js';
 
 export const completed = () => {
 

@@ -1,34 +1,22 @@
-import '../styles/todos.css'
-
-import { getAllProjects, getAllTasks, createNewProject, createNewTask } from '../api/http-api.js';
-
-import {
-    addDeleteButtonEventListeners, checkBoxesList,
-    createTaskHTML, logOutUser, showLoader, userAuthorized,
-} from '../utils/utils.js';
-import { header } from '../components/header.js';
+import { AllSection } from '../components/Section';
 import { navigateTo } from '../router/router';
 
-export const all = () => {
-    const allHTML = `
-${header}
-<div class="todo-container">
-<input type="text" class="todo-container__input">
-<button class="todo-container__button">Add Todo</button>
-<button type="button" class="todo-container__newProject">Create a new project</button>
-</div>
+import { getAllProjects, getAllTasks, createNewProject, createNewTask } from '../api/http-api.js';
+import {
+    addDeleteButtonEventListeners,
+    checkBoxesList, createTaskHTML,
+    logOutUser,
+    showLoader,
+    userAuthorized,
+} from '../utils/utils.js';
 
-<div class="tasks">
-<div class="loader-container">
-    <div class="loader"></div>
-</div>
-</div>
-<div class="log-out">
-<button type="submit" class="log-out__button">Log out</button>
-</div>
-`
+import '../styles/todos.css'
+
+
+export const all = () => {
+
     const app = document.getElementById('app')
-    app.innerHTML = allHTML
+    app.innerHTML = AllSection()
 
 
     const taskContainer = document.querySelector('.tasks');
