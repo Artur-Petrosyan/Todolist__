@@ -77,8 +77,8 @@ export const updateTask = async (isCompleted, id) => {
 
 
 
-export const getUsers = async (name, password,endpoint) => {
-    const url = 'http://localhost:3000/login';
+export const performAuthRequest = async (name, password, endpoint) => {
+    const url = `http://localhost:3000/${endpoint}`;
     const body = JSON.stringify({
         name, password
     })
@@ -93,21 +93,3 @@ export const getUsers = async (name, password,endpoint) => {
     return data
 }
 
-export const createUser = async (name, password) => {
-    const url = 'http://localhost:3000/register'
-    const body = JSON.stringify({
-        name, password
-    })
-    const response = await fetch(url, {
-        method: "POST",
-        headers: {
-            "Content-Type": 'application/json'
-        },
-        body,
-    }
-    )
-    const data = await response.json()
-    return data
-}
-
-// 

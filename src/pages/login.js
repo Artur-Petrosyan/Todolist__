@@ -1,6 +1,6 @@
 import '../styles/styles.css'
 import { navigateTo } from '../router/router.js';
-import { getUsers } from '../api/http-api.js';
+import { performAuthRequest } from '../api/http-api.js';
 
 
 const login = () => {
@@ -44,7 +44,7 @@ const login = () => {
     const password = formData.get('password')
     const name = formData.get('name')
 
-    const data = await getUsers(name, password)
+    const data = await performAuthRequest(name, password,'login')
     const access = data.access
     if (access) {
       localStorage.setItem('authorized', true);

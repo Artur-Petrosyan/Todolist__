@@ -1,4 +1,4 @@
-import { createUser } from "../api/http-api";
+import { performAuthRequest } from "../api/http-api";
 import { navigateTo } from "../router/router";
 
 const signUp = () => {
@@ -53,7 +53,7 @@ const signUp = () => {
             passwordInput.classList.remove('name-error')
         }
         if (name.length > 4 && password.length > 7) {
-            const response = await createUser(name, password)
+            const response = await performAuthRequest(name, password,'register')
             if (response.exists) {
                 const spanError = document.querySelector('.form__error-span');
                 if (!spanError) {
