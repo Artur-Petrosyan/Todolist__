@@ -94,7 +94,7 @@ export const getUsers = async (name, password,endpoint) => {
 }
 
 export const createUser = async (name, password) => {
-    const url = 'http://localhost:3000/registr'
+    const url = 'http://localhost:3000/register'
     const body = JSON.stringify({
         name, password
     })

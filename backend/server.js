@@ -69,7 +69,7 @@ app.post('/login', (req, res) => {
 
 
 
-app.post('/registr', async (req, res) => {
+app.post('/register', async (req, res) => {
   const usernameToCheck = req.body.name;
   const sqlSelect = "SELECT * FROM user WHERE NAME = ?";
   const sqlInsert = "INSERT INTO user (name, password) VALUES (?, ?)";
