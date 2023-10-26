@@ -75,3 +75,21 @@ export const updateTask = async (isCompleted, id) => {
 };
 
 
+
+
+export const performAuthRequest = async (name, password, endpoint) => {
+    const url = `http://localhost:3000/${endpoint}`;
+    const body = JSON.stringify({
+        name, password
+    })
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": 'application/json'
+        },
+        body
+    })
+    const data = await response.json()
+    return data
+}
+

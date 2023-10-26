@@ -46,7 +46,18 @@ body {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-   margin-right: 20px;
+    margin-right: 20px;
+}
+
+.form__button-login {
+    width: 100px;
+    height: 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
 }
 
 .form__button-signup {
@@ -59,10 +70,12 @@ body {
     cursor: pointer;
     font-size: 16px;
 }
+
 .form__buttons {
     display: flex;
     justify-content: center;
 }
+
 .form__button-signup a {
     text-decoration: none;
     color: white;
@@ -77,9 +90,11 @@ body {
     background-color: #0056b3;
     transition: background-color 0.3s ease;
 }
-.form__error-span{
+
+.form__error-span {
     color: red;
 }
+
 .registration-link {
     text-decoration: none;
     color: #007bff;
@@ -88,4 +103,9 @@ body {
 
 .registration-link:hover {
     text-decoration: underline;
+}
+
+
+.name-error {
+    border: 2px red solid;
 }
