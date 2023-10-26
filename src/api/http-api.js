@@ -77,8 +77,8 @@ export const updateTask = async (isCompleted, id) => {
 
 
 
-export const getUsers = async (name, password) => {
-    const url = 'http://localhost:3000/users';
+export const getUsers = async (name, password,endpoint) => {
+    const url = 'http://localhost:3000/login';
     const body = JSON.stringify({
         name, password
     })

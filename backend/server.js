@@ -37,7 +37,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.post('/users', (req, res) => {
+app.post('/login', (req, res) => {
   const { name, password } = req.body
   const sqlUsers = "SELECT * FROM `user` WHERE name = ?"
 
