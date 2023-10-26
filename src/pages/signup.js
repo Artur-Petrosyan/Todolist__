@@ -41,12 +41,12 @@ const signUp = () => {
         const formData = new FormData(form)
         const name = formData.get('name')
         const password = formData.get('password')
-
-
+        
+        
         name.length < 4 ? nameInput.classList.add('name-error') : nameInput.classList.remove('name-error')
         password.length < 8 ? passwordInput.classList.add('name-error') : passwordInput.classList.remove('name-error')
      
-        
+
         if (name.length > 4 && password.length > 7) {
             const response = await performAuthRequest(name, password, 'register')
             if (response.exists) {
