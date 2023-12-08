@@ -1,30 +1,5 @@
 import { getAllTasks, removeTask, updateTask } from '../api/http-api.js';
 
-const user = {
-    name: 'Artur',
-    password: '1234',
-};
-
-export const getInputVal = () => {
-    const inputName = document.querySelector('.form__input-name');
-    const inputPassword = document.querySelector('.form__input-password');
-
-    const namePassword = {
-        name: inputName.value,
-        password: inputPassword.value,
-    };
-    const { name, password } = namePassword;
-
-    if (user) {
-        if (name === user.name && password === user.password) {
-            return 'authorized';
-        }
-        inputName.value = '';
-        inputPassword.value = '';
-        return 'Incorrect login or password';
-    }
-};
-
 export const getFilteredTasks = (allTasks, type) => {
     if (type === 'completed') {
         return allTasks.filter((item) => item.priority === 2);
@@ -59,7 +34,7 @@ export const checkBoxesList = async (taskContainer) => {
             const isCompleted = Number(e.target.checked) + 1;
             const taskIsCompleted = document.getElementById(taskId);
             handleComplitedCheckboxClick(isCompleted, taskId);
-            if (window.location.pathname !== '/all.html') {
+            if (window.location.hash !== '#/all') {
                 taskContainer.removeChild(taskIsCompleted);
             }
         });
@@ -94,7 +69,6 @@ export const showLoader = (loader) => loader.classList.add('loader-container__di
 export const showTasks = async (type) => {
     const loader = document.querySelector('.loader-container');
     const taskContainer = document.querySelector('.tasks');
-    const url = window.location.hash
 
     const authorized = userAuthorized()
     if (authorized) {
